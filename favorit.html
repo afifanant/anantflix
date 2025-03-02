@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorit - AnantFlix</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-container">
+            <a href="index.html"><img src="images/logo.png" alt="AnantaFlix Logo" class="logo"></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Film</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="favorit.html">Favorit</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="title-favorit">Daftar Favorit</h1>
+    <ul id="favorites-list" class="favorites-grid"></ul>
+
+    <script>
+        function loadFavorites() {
+            let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+            let favoritesList = document.getElementById("favorites-list");
+            favoritesList.innerHTML = "";
+
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = "<p>Tidak ada film favorit.</p>";
+                return;
+            }
+
+            favorites.forEach(movie => {
+                let li = document.createElement("li");
+                let img = document.createElement("img");
+                img.src = movie.image;
+                img.alt = movie.title;
+                
+                let overlay = document.createElement("div");
+                overlay.classList.add("overlay");
+                overlay.innerHTML = `<strong>${movie.title}</strong><br>`;
+                
+                let removeBtn = document.createElement("button");
+                removeBtn.innerText = "❌";
+                removeBtn.classList.add("remove-btn");
+                removeBtn.onclick = function () {
+                    let index = favorites.findIndex(fav => fav.image === movie.image);
+                    if (index > -1) {
+                        favorites.splice(index, 1);
+                        localStorage.setItem("favorites", JSON.stringify(favorites));
+                        loadFavorites();
+                    }
+                };
+                
+                li.appendChild(img);
+                li.appendChild(overlay);
+                li.appendChild(removeBtn);
+                favoritesList.appendChild(li);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadFavorites();
+            const menuToggle = document.getElementById("menu-toggle");
+            const navMenu = document.getElementById("nav-menu");
+            menuToggle.addEventListener("click", function() {
+                navMenu.classList.toggle("show");
+                menuToggle.innerHTML = navMenu.classList.contains("show") ? "✖" : "&#9776;";
+            });
+        });
+    </script>
+</body>
+</html>

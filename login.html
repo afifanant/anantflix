@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - AnantFlix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: url('images/login.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .login-container {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 60px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            color: white;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            padding-left: 40px;
+            background: #333;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        .input-box i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #bbb;
+        }
+        .remember-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+        .remember-box input {
+            margin-right: 10px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #e50914;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .login-btn:hover {
+            background: #b20710;
+        }
+        .footer-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 40px;
+            }
+            .input-box input {
+                padding: 10px;
+                padding-left: 35px;
+            }
+            .login-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("remember") === "true") {
+                document.getElementById("username").value = localStorage.getItem("username");
+                document.getElementById("remember").checked = true;
+            }
+        });
+
+        function validateLogin(event) {
+            event.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let remember = document.getElementById("remember").checked;
+            
+            if (username === "afifanant" && password === "admin") {
+                if (remember) {
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("remember", "true");
+                } else {
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("remember");
+                }
+                window.location.href = 'admin.html';
+            } else {
+                alert("Username atau password salah!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Admin</h2>
+        <form onsubmit="validateLogin(event)">
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="remember-box">
+                <input type="checkbox" id="remember"> <label for="remember">Ingat Saya</label>
+            </div>
+            <button type="submit" class="login-btn">Masuk</button>
+        </form>
+        <p class="footer-text">Hanya untuk administrator AnantFlix.</p>
+    </div>
+</body>
+</html>

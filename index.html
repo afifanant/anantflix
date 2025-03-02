@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AnantFlix</title>
+        <link type="image/png" sizes="32x32" rel="icon" href="images/icons8-clapperboard-32.png">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <header class="navbar" >
+        <div class="logo-container">
+            <img src="images/logo.png" alt="AnantaFlix Logo" class="logo">
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Film</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="favorit.html">Favorit</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <input type="text" id="search-box" class="search-box" placeholder="Cari film atau series...">
+            <button id="search-button">
+                <img src="images/search-icon.png" alt="Cari" class="search-icon">
+            </button> 
+        </div>
+          
+    </header>
+    
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Tulang Belulang Tulang</h1>
+            <p class="hero-description">Seorang pemuda bertemu dengan wanita misterius dalam perjalanan panjang yang mengubah hidupnya.</p>
+            <div class="hero-buttons">
+                <button class="play-button">▶ Tonton</button>
+                <button class="info-button">ℹ Info Selengkapnya</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="category-filter">
+        <button  onclick="filterMovies('all')">📽 Semua</button>
+        <button  onclick="filterMovies('drama')">🎭 Drama</button>
+        <button  onclick="filterMovies('aksi')">🔥 Aksi</button>
+        <button onclick="filterMovies('komedi')">😂 Komedi</button>
+        <button  onclick="filterMovies('horor')">👻 Horor</button>
+    </div>
+    
+    <div class="movie-section">
+        <h2>Film Populer</h2>
+        <div class="movie-slider">
+            <div class="movie-container drama aksi">
+                <img src="images/miracle-cell.jpeg" class="thumbnail" alt="Miracle In Cell">
+                <p>⭐ 8.5 | Drama</p>
+                <button onclick="addToFavorites('Miracle In Cell', 'images/miracle-cell.jpeg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container horor">
+                <img src="images/kemah-terlarang.jpg" class="thumbnail" alt="Kemah Terlarang">
+                <p>⭐ 8.0 | Aksi</p>
+                <button onclick="addToFavorites('Kemah Terlarang', 'images/kemah-terlarang.jpg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container komedi">
+                <img src="images/kang-mak.jpeg" class="thumbnail" alt="Kang Mak">
+                <p>⭐ 7.5 | Komedi</p>
+                <button onclick="addToFavorites('Kang Mak', 'images/kang-mak.jpeg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container horor">
+                <img src="images/thaghut.jpeg" class="thumbnail" alt="Thaghut">
+                <p>⭐ 7.1 | Horor</p>
+                <button onclick="addToFavorites('Thaghut', 'images/thaghut.jpeg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container drama">
+                <img src="images/losmen-broto.jpg" class="thumbnail" alt="Losmen Broto">
+                <p>⭐ 8.2| Drama</p>
+                <button onclick="addToFavorites('Losmen Broto', 'images/losmen-broto.jpg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container drama">
+                <img src="images/tujuh-hari-keshia.jpg" class="thumbnail" alt="Tujuh Hari Keshia">
+                <p>⭐ 8.8 | Romantis</p>
+                <button onclick="addToFavorites('Tujuh Hari Keshia', 'images/tujuh-hari-keshia.jpg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container horor">
+                <img src="images/laut-tengah.jpg" class="thumbnail" alt="Laut Tengah">
+                <p>⭐ 7.5 | Drama</p>
+                <button onclick="addToFavorites('Laut Tengah', 'images/laut-tengah.jpg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container komedi">
+                <img src="images/kaka-boss.jpg" class="thumbnail" alt="Kaka Boss">
+                <p>⭐ 7.2 | Komedi</p>
+                <button onclick="addToFavorites('Kaka Boss', 'images/kaka-boss.jpg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container drama aksi">
+                <img src="images/miracle-cell.jpeg" class="thumbnail" alt="Miracle In Cell">
+                <p>⭐ 8.5 | Drama</p>
+                <button onclick="addToFavorites('Miracle In Cell', 'images/miracle-cell.jpeg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container horor">
+                <img src="images/kemah-terlarang.jpg" class="thumbnail" alt="Kemah Terlarang">
+                <p>⭐ 8.0 | Aksi</p>
+                <button onclick="addToFavorites('Kemah Terlarang', 'images/kemah-terlarang.jpg')"> ❤️ Favorit</button>
+            </div>
+            <div class="movie-container komedi">
+                <img src="images/kang-mak.jpeg" class="thumbnail" alt="Kang Mak">
+                <p>⭐ 7.5 | Komedi</p>
+                <button onclick="addToFavorites('Kang Mak', 'images/kang-mak.jpeg')"> ❤️ Favorit</button>
+            </div>
+            <div class="movie-container horor">
+                <img src="images/thaghut.jpeg" class="thumbnail" alt="Thaghut">
+                <p>⭐ 7.1 | Horor</p>
+                <button onclick="addToFavorites('Thaghut', 'images/thaghut.jpeg')"> ❤️ Favorit</button>
+            </div>
+            <div class="movie-container drama">
+                <img src="images/losmen-broto.jpg" class="thumbnail" alt="Losmen Broto">
+                <p>⭐ 8.2| Drama</p>
+                <button onclick="addToFavorites('Losmen Broto', 'images/losmen-broto.jpg')"> ❤️ Favorit</button>
+            </div>
+            <div class="movie-container drama">
+                <img src="images/tujuh-hari-keshia.jpg" class="thumbnail" alt="Tujuh Hari Keshia">
+                <p>⭐ 8.8 | Romantis</p>
+                <button onclick="addToFavorites('Tujuh Hari Keshia', 'images/tujuh-hari-keshia.jpg')">❤️ Favorit</button>
+            </div>
+            <div class="movie-container horor">
+                <img src="images/laut-tengah.jpg" class="thumbnail" alt="Laut Tengah">
+                <p>⭐ 7.5 | Drama</p>
+                <button onclick="addToFavorites('Laut Tengah', 'images/laut-tengah.jpg')"> ❤️ Favorit</button>
+            </div>
+            <div class="movie-container komedi">
+                <img src="images/kaka-boss.jpg" class="thumbnail" alt="Kaka Boss">
+                <p>⭐ 7.2 | Komedi</p>
+                <button onclick="addToFavorites('Kaka Boss', 'images/kaka-boss.jpg')"> ❤️ Favorit</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="container">
+        <div class="video-navigation">
+            <button id="prev-video" class="nav-button left">
+                <i class="fas fa-chevron-left"></i> Sebelumnya
+            </button>
+            <h2>Film Indonesia</h2>
+            <button id="next-video" class="nav-button right">
+                Selanjutnya <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="video-wrapper" id="video-wrapper">
+            <p id="no-results" style="display: none; text-align: center; font-size: 18px; color: gray;">
+                🔍 Tidak ditemukan hasil yang sesuai.
+            </p>
+        </div>
+    </div>
+
+<!-- Kontak Saya -->
+<div class="contact-section">
+    <h2>Hubungi Saya</h2>
+    <p>Jika ingin menghubungi saya, silakan klik tombol di bawah ini.</p>
+    <a href="https://www.instagram.com/afifanant" target="_blank">
+        <button class="styled-button instagram">
+            <i class="fab fa-instagram"></i> Hubungi via Instagram
+        </button>
+    </a>
+</div>
+
+
+    <footer>
+        <p>&copy; 2025 AnantFlix. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script type="module">
+
+        function addToFavorites(movieTitle, imageUrl) {
+        let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+        // Cek apakah film sudah ada
+        if (favorites.some(fav => fav.title === movieTitle)) {
+            alert(movieTitle + " sudah ada di daftar favorit!");
+            return;
+        }
+
+        // Tambahkan ke daftar favorit
+        favorites.push({ title: movieTitle, image: imageUrl });
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+        // Tampilkan alert dan langsung ke favorit.html setelah tombol "Oke" ditekan
+        alert(movieTitle + " telah ditambahkan ke daftar favorit!");
+        window.location.href = "favorit.html";
+    }
+
+    // Pastikan fungsi bisa diakses secara global
+    window.addToFavorites = addToFavorites;
+
+
+
+        document.querySelector('.play-button').addEventListener('click', function() {
+        window.location.href = 'player.html?video=https://boosterx.stream/v/A0NMbQmN7SW4/';
+        });
+  
+
+        function filterMovies(category) {
+    console.log("Filter kategori:", category);
+    let movies = document.querySelectorAll('.movie-container');
+
+    movies.forEach(movie => {
+        if (category === 'all') {
+            movie.style.display = 'block';
+        } else if (movie.classList.contains(category)) {
+            movie.style.display = 'block';
+        } else {
+            movie.style.display = 'none';
+        }
+    });
+}
+
+// Buat fungsi filterMovies tersedia secara global
+window.filterMovies = filterMovies;
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM sepenuhnya dimuat");
+
+    const searchBox = document.getElementById("search-box");
+    const searchButton = document.getElementById("search-button");
+
+    if (!searchBox || !searchButton) {
+        console.error("Element search-box atau search-button tidak ditemukan!");
+        return;
+    }
+
+
+    searchButton.addEventListener("click", function () {
+        console.log("Tombol pencarian diklik!");
+        searchMovies();
+    });
+
+    searchBox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            console.log("Tombol Enter ditekan!");
+            event.preventDefault();
+            searchMovies();
+        }
+    });
+});
+
+
+
+
+function toggleMenu() {
+    let menu = document.getElementById("nav-menu");
+    if (menu) {
+        console.log("Tombol hamburger ditekan!");
+        menu.classList.toggle("show");
+
+        // Periksa apakah kelas 'show' benar-benar ditambahkan atau tidak
+        console.log("Kelas show:", menu.classList.contains("show"));
+    } else {
+        console.error("Elemen #nav-menu tidak ditemukan!");
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuToggle.addEventListener("click", function() {
+        navMenu.classList.toggle("show");
+
+        // Ubah ikon menu toggle
+        if (navMenu.classList.contains("show")) {
+            menuToggle.innerHTML = "✖"; // Ubah ke ikon X
+        } else {
+            menuToggle.innerHTML = "&#9776;"; // Kembali ke ikon ☰
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBox = document.getElementById("search-box");
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBox = document.getElementById("search-box");
+    const searchButton = document.getElementById("search-button");
+    const noResults = document.getElementById("no-results");
+    const prevButton = document.getElementById("prev-video");
+    const nextButton = document.getElementById("next-video");
+    const videoContainers = document.querySelectorAll(".video-container");
+    searchBox.addEventListener("input", searchMovies); // Jalankan saat mengetik
+    searchButton.addEventListener("click", searchMovies);
+    searchBox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchMovies();
+        }
+    });
+    let currentIndex = 0;
+    const videosPerPage = 12; // Menampilkan 12 video per halaman
+
+    function updateVisibility() {
+        // Sembunyikan semua video
+        videoContainers.forEach(video => video.style.display = "none");
+
+        // Tampilkan hanya video yang sesuai dengan halaman saat ini
+        for (let i = currentIndex; i < currentIndex + videosPerPage && i < videoContainers.length; i++) {
+            videoContainers[i].style.display = "block";
+        }
+    }
+
+   
+    // Event listener untuk tombol navigasi video
+    prevButton.addEventListener("click", function () {
+        if (currentIndex > 0) {
+            currentIndex -= videosPerPage;
+            updateVisibility();
+        }
+    });
+
+    nextButton.addEventListener("click", function () {
+        if (currentIndex + videosPerPage < videoContainers.length) {
+            currentIndex += videosPerPage;
+            updateVisibility();
+        }
+    });
+
+    // Inisialisasi tampilan awal
+    updateVisibility();
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let searchBox = document.getElementById("search-box");
+    let heroSection = document.querySelector(".hero");
+    let movieSection = document.querySelector(".movie-section");
+    let categoryFilter = document.querySelector(".category-filter");
+});
+
+
+function setupPagination() {
+    const videoWrapper = document.getElementById("video-wrapper");
+    const prevButton = document.getElementById("prev-video");
+    const nextButton = document.getElementById("next-video");
+
+    if (!prevButton || !nextButton) {
+        console.error("Tombol Next/Prev tidak ditemukan!");
+        return;
+    }
+    
+    let currentIndex = 0;
+    
+    function getVideosPerPage() {
+        return window.innerWidth <= 768 ? 8 : 12; // 🔥 Mobile = 8, Desktop = 12
+    }
+
+    function getVideoContainers() {
+        return Array.from(videoWrapper.querySelectorAll(".video-container"));
+    }
+
+    function updateVisibility() {
+    if (document.getElementById("search-box").value.trim().length > 0) {
+        return; // Jangan jalankan pagination kalau ada pencarian
+    }
+
+    let videoContainers = document.querySelectorAll(".video-container");
+    let videosPerPage = 12;
+
+    videoContainers.forEach(video => video.style.display = "none");
+
+    for (let i = currentIndex; i < currentIndex + videosPerPage && i < videoContainers.length; i++) {
+        videoContainers[i].style.display = "block";
+    }
+
+        // Update tombol Next & Prev
+        prevButton.style.visibility = currentIndex === 0 ? "hidden" : "visible";
+        nextButton.style.visibility = (currentIndex + videosPerPage >= videoContainers.length) ? "hidden" : "visible";
+
+        // 🔥 Fix: Pastikan tombol tidak dalam keadaan disabled
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = (currentIndex + videosPerPage >= videoContainers.length);
+    }
+
+    prevButton.onclick = function () {
+        if (currentIndex > 0) {
+            currentIndex -= getVideosPerPage();
+            updateVisibility();
+        }
+    };
+
+    nextButton.onclick = function () {
+        let videoContainers = getVideoContainers();
+        if (currentIndex + getVideosPerPage() < videoContainers.length) {
+            currentIndex += getVideosPerPage();
+            updateVisibility();
+        }
+    };
+
+    // Jalankan update setiap kali ukuran layar berubah
+    window.addEventListener("resize", updateVisibility);
+    
+    updateVisibility();
+}
+
+
+
+    document.addEventListener("DOMContentLoaded", loadMovies);
+    document.addEventListener("DOMContentLoaded", function () {
+    const videoWrapper = document.getElementById("video-wrapper"); // Container utama
+    const prevButton = document.getElementById("prev-video");
+    const nextButton = document.getElementById("next-video");
+
+    let scrollAmount = 0;
+    const scrollStep = 300; // Jarak scroll setiap klik
+    let maxScroll = 0;
+
+    function updateScrollLimits() {
+        maxScroll = videoWrapper.scrollWidth - videoWrapper.clientWidth;
+        updateButtons();
+    }
+
+    function updateButtons() {
+        prevButton.style.display = "inline-block"; // Pastikan tombol selalu muncul
+        nextButton.style.display = "inline-block";
+
+        prevButton.disabled = scrollAmount <= 0;
+        nextButton.disabled = scrollAmount >= maxScroll;
+
+        if (maxScroll <= 0) {
+            prevButton.style.visibility = "hidden";
+            nextButton.style.visibility = "hidden";
+        } else {
+            prevButton.style.visibility = "visible";
+            nextButton.style.visibility = "visible";
+        }
+    }
+
+    prevButton.addEventListener("click", function () {
+        scrollAmount -= scrollStep;
+        if (scrollAmount < 0) scrollAmount = 0;
+        videoWrapper.scrollTo({ left: scrollAmount, behavior: "smooth" });
+        updateButtons();
+    });
+
+    nextButton.addEventListener("click", function () {
+        scrollAmount += scrollStep;
+        if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+        videoWrapper.scrollTo({ left: scrollAmount, behavior: "smooth" });
+        updateButtons();
+    });
+
+    window.addEventListener("resize", updateScrollLimits);
+    updateScrollLimits(); // Pastikan tombol terlihat saat pertama kali dimuat
+});
+
+
+
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+// Ganti dengan URL dan API Key Supabase-mu
+const supabaseUrl = "https://atwzfxbwtdtludglgjln.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF0d3pmeGJ3dGR0bHVkZ2xnamxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4NjM5MjQsImV4cCI6MjA1NjQzOTkyNH0.dYG71H9sbQduVsgALv5oGLvpJsNhr38W5rU7zaacM2s";
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+async function loadMovies() {
+let movieContainer = document.getElementById("video-wrapper");
+movieContainer.innerHTML = "<p>Memuat film...</p>";
+
+const { data: movies, error } = await supabase.from("movies").select("*");
+
+if (error) {
+    console.error("Error mengambil film:", error);
+    movieContainer.innerHTML = "<p>Gagal memuat film.</p>";
+    return;
+}
+
+
+
+movieContainer.innerHTML = ""; // Kosongkan sebelum menampilkan film baru
+
+movies.forEach(movie => {
+    let movieDiv = document.createElement("div");
+    movieDiv.classList.add("video-container");
+    movieDiv.innerHTML = `
+        <img src="${movie.image}" class="thumbnail" alt="${movie.title}">
+        <div class="overlay">
+            <p class="video-title">${movie.title}</p>
+        </div>
+    `;
+    movieDiv.addEventListener("click", () => {
+  window.location.href = `player.html?video=${encodeURIComponent(movie.url)}`;
+});
+    movieContainer.appendChild(movieDiv);
+});
+
+// Tunggu hingga data selesai dimuat sebelum memanggil pagination
+setTimeout(setupPagination, 500);
+}
+
+function playVideo(videoSrc) {
+    window.location.href = `player.html?video=${encodeURIComponent(videoSrc)}`;
+}
+
+function searchMovies() {
+    let searchQuery = document.getElementById("search-box").value.trim().toLowerCase();
+    let videoContainers = document.querySelectorAll(".video-container");
+    let noResults = document.getElementById("no-results");
+    let found = false;
+
+    if (searchQuery.length > 0) {
+        // Filter video berdasarkan input pencarian
+        videoContainers.forEach(video => {
+            let titleElement = video.querySelector(".video-title");
+            if (titleElement) {
+                let title = titleElement.innerText.trim().toLowerCase();
+                if (title.includes(searchQuery)) {
+                    video.style.display = "block";
+                    found = true;
+                } else {
+                    video.style.display = "none";
+                }
+            }
+        });
+    } else {
+        // Jika input pencarian kosong, reset pagination dan tampilkan ulang 12 video pertama
+        videoContainers.forEach(video => video.style.display = "block");
+        currentIndex = 0; // Reset ke halaman pertama
+        setTimeout(() => {
+            updateVisibility();
+        }, 100);
+    }
+
+    noResults.style.display = found || searchQuery.length === 0 ? "none" : "block";
+}
+function updateVisibility() {
+    let videoContainers = document.querySelectorAll(".video-container");
+    let videosPerPage = 12; // Hanya tampilkan 12 video pertama
+    videoContainers.forEach(video => video.style.display = "none");
+
+    for (let i = 0; i < videosPerPage && i < videoContainers.length; i++) {
+        videoContainers[i].style.display = "block";
+    }
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBox = document.getElementById("search-box");
+    searchBox.addEventListener("input", searchMovies);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBox = document.getElementById("search-box");
+    const heroSection = document.querySelector(".hero");
+    const heroButtons = document.querySelector(".hero-buttons");
+    const horrorMovies = document.querySelectorAll(".movie-container.horor");
+    const movieSection = document.querySelector(".movie-section");
+    const prevButton = document.getElementById("prev-video");
+    const nextButton = document.getElementById("next-video");
+    const categoryFilter = document.querySelector(".category-filter");
+    const videoNavigation = document.querySelector(".video-navigation"); // Bagian Film Indonesia
+    const movieContainers = document.querySelectorAll(".movie-container"); // Semua film
+    let currentIndex = 0;
+    const videosPerPage = 12;
+
+    searchBox.addEventListener("input", function () {
+        let query = searchBox.value.trim().toLowerCase();
+        let isSearching = query.length > 0;
+
+
+
+        // Sembunyikan/munculkan hero section & tombol hero
+        heroSection.style.display = isSearching ? "none" : "block";
+        if (heroButtons) heroButtons.style.display = isSearching ? "none" : "flex";
+
+        // Sembunyikan semua film horor hanya saat ada pencarian
+        horrorMovies.forEach(movie => {
+            movie.style.display = isSearching ? "none" : "block";
+        });
+
+        // Sembunyikan/munculkan movie section "Film Populer"
+        movieSection.style.display = isSearching ? "none" : "block";
+
+        // Sembunyikan/munculkan tombol prev & next
+        prevButton.style.display = isSearching ? "none" : "inline-block";
+        nextButton.style.display = isSearching ? "none" : "inline-block";
+
+        // Sembunyikan/munculkan category filter
+        categoryFilter.style.display = isSearching ? "none" : "flex";
+
+        // Sembunyikan/munculkan navigasi video (Film Indonesia)
+        videoNavigation.style.display = isSearching ? "none" : "flex";
+
+        // Jika pencarian kosong, kembalikan semua film yang ada
+        movieContainers.forEach(movie => {
+            movie.style.display = "block";
+        });
+
+        // Jika tidak ada input, jalankan ulang filter agar layout kembali normal
+        if (!isSearching) {
+            resetLayout();
+        }
+    });
+
+    function resetLayout() {
+        // Kembalikan tampilan default ke semua elemen
+        horrorMovies.forEach(movie => movie.style.display = "block");
+        heroSection.style.display = "block";
+        heroButtons.style.display = "flex";
+        movieSection.style.display = "block";
+        categoryFilter.style.display = "flex";
+        videoNavigation.style.display = "flex";
+        prevButton.style.display = "inline-block";
+        nextButton.style.display = "inline-block";
+    }
+});
+
+
+
+
+    </script>
+
+</body>
+</html>
