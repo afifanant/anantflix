@@ -1,7 +1,7 @@
 # 🎬 Anantflix - Platform Streaming Web
 
 <p align="center">
-  <img src="images/logo.png" alt="Anantflix Logo" width="200">
+  <img src="images/logo.png" alt="Anantflix Logo" width="350">
 </p>
 
 **Anantflix** adalah platform streaming web yang menyediakan berbagai konten hiburan berkualitas tinggi untuk pengguna di seluruh dunia.
