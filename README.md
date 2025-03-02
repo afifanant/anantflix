@@ -1,6 +1,10 @@
 # Anantflix - Platform Streaming Web
+
 ![Anantflix Banner](images/logo.png)
+
 Anantflix adalah platform streaming web yang menyediakan berbagai konten hiburan berkualitas tinggi untuk pengguna di seluruh dunia.
+
+🌐 **Akses Web:** [Anantflix](https://anantflix.netlify.app/)
 
 ## Fitur Utama
 - Streaming video berkualitas tinggi
@@ -18,7 +22,7 @@ npm start
 ```
 
 ## Penggunaan
-1. Buka browser dan akses `http://localhost:3000`.
+1. Buka browser dan akses `http://localhost:3000` atau kunjungi [Anantflix](https://anantflix.netlify.app/).
 2. Daftar atau masuk dengan akun Anda.
 3. Jelajahi dan nikmati konten yang tersedia.
 
