@@ -481,8 +481,6 @@ if (error) {
     return;
 }
 
-
-
 movieContainer.innerHTML = ""; // Kosongkan sebelum menampilkan film baru
 
 movies.forEach(movie => {
@@ -497,12 +495,32 @@ movies.forEach(movie => {
     movieDiv.addEventListener("click", () => {
   window.location.href = `player.html?video=${encodeURIComponent(movie.url)}`;
 });
+
     movieContainer.appendChild(movieDiv);
 });
+limitVideos();
+function limitVideos() {
+    let videoContainers = document.querySelectorAll(".video-wrapper .video-container");
 
+    if (window.innerWidth <= 768) {
+        videoContainers.forEach((video, index) => {
+            if (index >= 8) {
+                video.style.display = "none"; // Sembunyikan video lebih dari 8 di mobile
+            }
+        });
+    }
+}
+
+
+// Pastikan `limitVideos()` dipanggil setiap kali ukuran layar berubah
+window.addEventListener("resize", limitVideos);
+
+// Panggil loadMovies saat halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", loadMovies);
 // Tunggu hingga data selesai dimuat sebelum memanggil pagination
 setTimeout(setupPagination, 500);
 }
+
 
 function playVideo(videoSrc) {
     window.location.href = `player.html?video=${encodeURIComponent(videoSrc)}`;
@@ -578,6 +596,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    let videoContainers = document.querySelectorAll(".video-wrapper .video-container");
+
+    if (window.innerWidth <= 768) {
+        videoContainers.forEach((video, index) => {
+            if (index >= 8) video.style.display = "none"; // Sembunyikan video lebih dari 8
+        });
+    }
+});
 
 
 
