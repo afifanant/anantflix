@@ -556,67 +556,26 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const searchBox = document.getElementById("search-box");
     const heroSection = document.querySelector(".hero");
-    const heroButtons = document.querySelector(".hero-buttons");
-    const horrorMovies = document.querySelectorAll(".movie-container.horor");
+    const categoryFilter = document.querySelector(".category-filter");
     const movieSection = document.querySelector(".movie-section");
     const prevButton = document.getElementById("prev-video");
     const nextButton = document.getElementById("next-video");
-    const categoryFilter = document.querySelector(".category-filter");
-    const videoNavigation = document.querySelector(".video-navigation"); // Bagian Film Indonesia
-    const movieContainers = document.querySelectorAll(".movie-container"); // Semua film
-    let currentIndex = 0;
-    const videosPerPage = 12;
 
     searchBox.addEventListener("input", function () {
-        let query = searchBox.value.trim().toLowerCase();
-        let isSearching = query.length > 0;
-
-
-
-        // Sembunyikan/munculkan hero section & tombol hero
-        heroSection.style.display = isSearching ? "none" : "block";
-        if (heroButtons) heroButtons.style.display = isSearching ? "none" : "flex";
-
-        // Sembunyikan semua film horor hanya saat ada pencarian
-        horrorMovies.forEach(movie => {
-            movie.style.display = isSearching ? "none" : "block";
-        });
-
-        // Sembunyikan/munculkan movie section "Film Populer"
-        movieSection.style.display = isSearching ? "none" : "block";
-
-        // Sembunyikan/munculkan tombol prev & next
-        prevButton.style.display = isSearching ? "none" : "inline-block";
-        nextButton.style.display = isSearching ? "none" : "inline-block";
-
-        // Sembunyikan/munculkan category filter
-        categoryFilter.style.display = isSearching ? "none" : "flex";
-
-        // Sembunyikan/munculkan navigasi video (Film Indonesia)
-        videoNavigation.style.display = isSearching ? "none" : "flex";
-
-        // Jika pencarian kosong, kembalikan semua film yang ada
-        movieContainers.forEach(movie => {
-            movie.style.display = "block";
-        });
-
-        // Jika tidak ada input, jalankan ulang filter agar layout kembali normal
-        if (!isSearching) {
-            resetLayout();
+        if (searchBox.value.trim().length > 0) {
+            heroSection.classList.add("hidden");  
+            categoryFilter.classList.add("hidden");  
+            movieSection.classList.add("hidden");  // Sembunyikan movie section juga
+            prevButton.classList.add("hidden");  
+            nextButton.classList.add("hidden");  
+        } else {
+            heroSection.classList.remove("hidden");
+            categoryFilter.classList.remove("hidden");
+            movieSection.classList.remove("hidden");  // Tampilkan lagi
+            prevButton.classList.remove("hidden");
+            nextButton.classList.remove("hidden");
         }
     });
-
-    function resetLayout() {
-        // Kembalikan tampilan default ke semua elemen
-        horrorMovies.forEach(movie => movie.style.display = "block");
-        heroSection.style.display = "block";
-        heroButtons.style.display = "flex";
-        movieSection.style.display = "block";
-        categoryFilter.style.display = "flex";
-        videoNavigation.style.display = "flex";
-        prevButton.style.display = "inline-block";
-        nextButton.style.display = "inline-block";
-    }
 });
 
 

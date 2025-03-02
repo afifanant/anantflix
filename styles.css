@@ -1622,6 +1622,27 @@ button:hover {
 }
 
 
+.hero.hidden {
+    visibility: hidden;  /* Sembunyikan tanpa menghapus ruang */
+    height: 0;  /* Hilangkan tinggi elemen */
+    overflow: hidden;  /* Pastikan tidak ada elemen yang terlihat */
+    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.category-filter.hidden {
+    visibility: hidden; /* Sembunyikan tapi tetap mempertahankan tata letak */
+    height: 0; /* Hilangkan tinggi elemen */
+    overflow: hidden;
+    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.movie-section.hidden {
+    visibility: hidden; /* Sembunyikan tapi tetap mempertahankan tata letak */
+    height: 0; /* Hilangkan tinggi elemen */
+    overflow: hidden;
+    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
 
 
 
