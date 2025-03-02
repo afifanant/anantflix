@@ -313,17 +313,39 @@ nav ul li a {
                 let div = document.createElement("div");
                 div.classList.add("admin-movie-item");
                 div.innerHTML = `
-                    <p>${movie.title}</p>
+                    <p id="title-${movie.id}">${movie.title}</p>
                     <img src="${movie.image}" class="thumbnail" alt="${movie.title}">
+                    <button class="edit-btn" onclick="editMovie('${movie.id}', '${movie.title}')">✏️ Edit</button>
                     <button class="delete-btn" onclick="deleteMovie('${movie.id}')">🗑 Hapus</button>
                 `;
                 adminMovieContainer.appendChild(div);
             });
         }
-        
-        document.getElementById("saveButton").addEventListener("click", addMovie);
+        window.editMovie = async function(id, oldTitle) {
+            const newTitle = prompt("Masukkan judul baru:", oldTitle);
+            if (newTitle && newTitle.trim() !== "") {
+                const { error } = await supabase.from("movies").update({ title: newTitle }).eq("id", id);
+                if (error) {
+                    console.error("Error mengupdate judul film:", error);
+                    alert("Gagal mengupdate judul film!");
+                } else {
+                    alert("Judul film berhasil diperbarui!");
+                    document.getElementById(`title-${id}`).textContent = newTitle;
+                }
+            }
+        }
+        window.deleteMovie = async function(id) {
+            const { error } = await supabase.from("movies").delete().eq("id", id);
+            if (error) {
+                console.error("Error menghapus film:", error.message);
+                alert("Gagal menghapus film: " + error.message);
+            } else {
+                alert("Film berhasil dihapus!");
+                loadAdminMovies();
+            }
+        }
+        document.getElementById("saveButton").addEventListener("click", loadAdminMovies);
         document.addEventListener("DOMContentLoaded", loadAdminMovies);
-
         document.getElementById("menu-toggle").addEventListener("click", function () {
         document.getElementById("nav-menu").classList.toggle("show");
     });
