@@ -29,5 +29,5 @@ Kami menyambut kontribusi dari siapa pun. Silakan fork repositori ini dan buat p
 Proyek ini dilisensikan di bawah MIT License.
 
 ## Kontak
-Untuk pertanyaan atau dukungan, hubungi kami di afifanantt@gmail.com.
+Untuk pertanyaan atau dukungan, hubungi kami di afifanant@gmail.com.
 
