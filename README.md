@@ -1,5 +1,5 @@
 # Anantflix - Platform Streaming Web
-
+![Anantflix Banner](images/logo.png)
 Anantflix adalah platform streaming web yang menyediakan berbagai konten hiburan berkualitas tinggi untuk pengguna di seluruh dunia.
 
 ## Fitur Utama
