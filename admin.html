@@ -7,34 +7,26 @@
     <link type="image/png" sizes="96x96" rel="icon" href="images/icon.png">
     <link rel="stylesheet" href="styles.css">
     <style>
+  .search-box {
+        margin-left: 300px;
+        flex-grow: 1;
+        border: none;
+        color: white;
+        outline: none;
+        font-size: 16px;
+        width: 800px;
+    }
+    .search-icon {
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #fff;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #1e1e1e;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+        cursor: pointer;
+    }
+    #admin-search-button {
+        display: flex;
+        margin: 20px;
+        border: none;
+        background: none;
+        padding: 0;
+    }
         h1, h2 {
             text-align: center;
         }
@@ -88,40 +80,11 @@
             background-color: #cc0000;
         }
 
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #141414;
-            color: #fff;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #000;
-        }
-
         .menu-toggle {
             display: none;
-            font-size: 24px;
+            font-size: 30px;
             cursor: pointer;
             color: white;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
         }
         @media (max-width: 768px) {
             .menu-toggle {
@@ -146,17 +109,10 @@
             }
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        .logo {
-            width: 150px;
-            height: auto;
-        }
+    
         .menu-toggle {
             display: none;
-            font-size: 24px;
+            font-size: 30px;
             cursor: pointer;
             color: white;
         }
@@ -196,25 +152,43 @@
     align-items: center;
 }
 
-nav {
-    flex-grow: 1; /* Membuat menu memenuhi ruang kosong */
+#admin-movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin-left: 20px; /* Jarak dari logo */
+.admin-movie-item {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
 }
 
-nav ul li {
-    margin: 0 15px;
+.thumbnail {
+    max-width: 100%;
+    border-radius: 5px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+@media (max-width: 1024px) {
+    #admin-movie-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #admin-movie-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .search-box {
+            margin-left: 60px;
+            width: 1500%; /* Lebih lebar di mobile */
+            justify-content: center; /* Pusatkan konten */
+        }
+        .search-icon{
+            visibility: hidden;
+        }
 }
 
     </style>
@@ -235,6 +209,12 @@ nav ul li a {
                 <li><a href="admin.html" class="login-btn">Admin</a></li>
             </ul>
         </nav>
+        <div class="search-container">
+            <input type="text" id="admin-search-box" class="search-box" placeholder="Cari film...">
+            <button id="admin-search-button">
+                <img src="images/search-icon.png" alt="Cari" class="search-icon">
+            </button> 
+        </div>
     </header>
     <!-- Navbar End -->
     
@@ -350,6 +330,29 @@ nav ul li a {
         document.getElementById("menu-toggle").addEventListener("click", function () {
         document.getElementById("nav-menu").classList.toggle("show");
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const adminSearchBox = document.getElementById("admin-search-box");
+    const adminSearchButton = document.getElementById("admin-search-button");
+    
+    function searchAdminMovies() {
+        let query = adminSearchBox.value.trim().toLowerCase();
+        let movieItems = document.querySelectorAll(".admin-movie-item");
+        
+        movieItems.forEach(item => {
+            let title = item.querySelector("p").innerText.toLowerCase();
+            if (title.includes(query)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+
+    adminSearchBox.addEventListener("input", searchAdminMovies);
+    adminSearchButton.addEventListener("click", searchAdminMovies);
+});
+
     </script>
 </body>
 </html>
