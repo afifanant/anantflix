@@ -1404,6 +1404,12 @@ button:hover {
         text-align: center;
         z-index: 2;
     }
+    .hero-title {
+        font-size: 1.5rem; /* Sesuaikan ukuran agar pas di mobile */
+        white-space: nowrap; /* Mencegah teks turun ke baris baru */
+        overflow: hidden; /* Mencegah teks keluar dari container */
+        text-overflow: ellipsis; /* Jika teks kepanjangan, tambahkan "..." */
+    }
 }
 
 @media (max-width: 768px) {
