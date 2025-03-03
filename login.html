@@ -156,25 +156,6 @@ body {
     color: #e50914;
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    .navbar nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 10px 0;
-        text-align: center;
-    }
-    .navbar nav ul.show {
-        display: flex;
-    }
-}
 
 .forgot-password {
     margin-top: auto;
@@ -255,7 +236,8 @@ body {
     }
 
     .navbar {
-        padding: 15px 20px;
+        height: 10%;
+        padding: 10px 15px;
     }
 
     .navbar .logo img {
@@ -267,7 +249,7 @@ body {
         font-size: 26px;
     }
 
-    .navbar nav ul {
+    .nav-menu {
         display: none;
         flex-direction: column;
         position: absolute;
@@ -279,8 +261,13 @@ body {
         text-align: center;
     }
 
-    .navbar nav ul.show {
+    .nav-menu.show {
         display: flex;
+        
+    }
+
+    .nav-menu li {
+        padding: 10px 0;
     }
 
     .login-form input {
@@ -301,7 +288,17 @@ body {
         font-size: 12px;
         padding: 15px;
     }
+
+    .toggle-password {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
+}
+
+
 
 
     </style>
