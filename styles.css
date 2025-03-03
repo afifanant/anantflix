@@ -1740,7 +1740,7 @@ body {
 .container {
     flex: 1;
     max-width: 100%;
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;
 }
 #video-container {
@@ -1787,7 +1787,6 @@ video, iframe {
         width: 100vw;
         height: 60vh; /* Dibuat lebih pendek */
             overflow: hidden;
-            margin-top: 50px; /* Geser video ke bawah */
     }
 
     #video-player, iframe {
