@@ -3,150 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - AnantFlix</title>
-    <link type="image/png" sizes="96x96" rel="icon" href="images/icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background: url('images/login.jpg') no-repeat center center/cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 20px;
-        }
-        .login-container {
-            background: rgba(0, 0, 0, 0.75);
-            padding: 60px;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            color: white;
-        }
-        h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        .input-box {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .input-box input {
-            width: 100%;
-            padding: 12px;
-            padding-left: 40px;
-            background: #333;
-            border: none;
-            border-radius: 5px;
-            color: white;
-        }
-        .input-box i {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #bbb;
-        }
-        .remember-box {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            color: #b3b3b3;
-            font-size: 14px;
-        }
-        .remember-box input {
-            margin-right: 10px;
-        }
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: #e50914;
-            border: none;
-            color: white;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .login-btn:hover {
-            background: #b20710;
-        }
-        .footer-text {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #b3b3b3;
-        }
-        @media (max-width: 768px) {
-            .login-container {
-                padding: 40px;
-            }
-            .input-box input {
-                padding: 10px;
-                padding-left: 35px;
-            }
-            .login-btn {
-                padding: 10px;
-                font-size: 14px;
-            }
-            body {
-        background: url('images/login-mobile.jpg') no-repeat center center/cover;
+       /* Reset dasar */
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('images/login.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar .logo img {
+    width: 150px;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar nav ul li a:hover {
+    color: #e50914;
+}
+
+.login-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    color: white;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+.login-form input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.login-form button {
+    width: 100%;
+    padding: 15px;
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-form button:hover {
+    background: #b20710;
+}
+
+
+
+.footer {
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer .social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .social-icons a:hover {
+    color: #e50914;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
     }
-        }
+    .navbar nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px 0;
+        text-align: center;
+    }
+    .navbar nav ul.show {
+        display: flex;
+    }
+}
+
+.forgot-password {
+    margin-top: auto;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: #ff4c4c; /* Warna merah lebih terang saat hover */
+    transform: scale(1.05); /* Sedikit membesar */
+    text-shadow: 0px 0px 5px rgba(255, 76, 76, 0.5); /* Efek glow */
+}
+
+.forgot-password:active {
+    transform: scale(0.95); /* Mengecil sedikit saat diklik */
+}
+
+.remember-container {
+    display: flex;
+    align-items: center; /* Biar checkbox dan teks sejajar */
+    gap: 5px; /* Atur jarak antara checkbox dan teks */
+    width: fit-content; /* Sesuaikan lebar hanya dengan isi */
+    margin-bottom: 15px;
+}
+
+.remember-container input {
+    margin: 0;
+    transform: scale(1.2); /* Perbesar checkbox sedikit */
+}
+
+.remember-container label {
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    white-space: nowrap; /* Pastikan teks tidak turun ke bawah */
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Beri ruang buat ikon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.toggle-password img:hover {
+    opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .navbar .logo img {
+        width: 120px;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 26px;
+    }
+
+    .navbar nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navbar nav ul.show {
+        display: flex;
+    }
+
+    .login-form input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .login-form button {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .forgot-password {
+        font-size: 14px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 15px;
+    }
+}
+
+
     </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <header class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Film</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="favorit.html">Favorit</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="login-container">
+        <h2>Masuk</h2>
+        <form id="loginForm" class="login-form">
+            <input type="text" id="username" placeholder="Email atau nomor telepon" required>
+            <input type="password" id="password" placeholder="Kata sandi" required>
+            <span class="toggle-password" onclick="togglePassword()">
+                <img src="images/eye-tutup.png" id="eyeIcon" alt="Show Password">
+            </span>
+            <div class="remember-container">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Ingat Saya</label>
+            </div>            
+            <button type="submit">Masuk</button>
+        </form>
+        <p><span id="forgotPassword" class="forgot-password">Lupa kata sandi?</span></p>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2025 AnantFlix. Semua Hak Dilindungi.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if (localStorage.getItem("remember") === "true") {
-                document.getElementById("username").value = localStorage.getItem("username");
-                document.getElementById("remember").checked = true;
+       
+        const { createClient } = supabase;
+        const supabaseUrl = "https://atwzfxbwtdtludglgjln.supabase.co";
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF0d3pmeGJ3dGR0bHVkZ2xnamxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4NjM5MjQsImV4cCI6MjA1NjQzOTkyNH0.dYG71H9sbQduVsgALv5oGLvpJsNhr38W5rU7zaacM2s";
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+        document.addEventListener("DOMContentLoaded", function () {
+        // Cek apakah ada data login tersimpan
+        if (localStorage.getItem("rememberMe") === "true") {
+            document.getElementById("username").value = localStorage.getItem("savedUsername");
+            document.getElementById("rememberMe").checked = true;
+        }
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const rememberMe = document.getElementById("rememberMe").checked;
+
+        const { data, error } = await supabaseClient
+            .from("users")
+            .select("id, username")
+            .eq("username", username)
+            .eq("password", password)
+            .single();
+
+        if (error || !data) {
+            alert("Login gagal. Periksa username dan password Anda.");
+        } else {
+            alert("Login berhasil! Selamat datang, " + data.username);
+            
+            if (rememberMe) {
+                localStorage.setItem("rememberMe", "true");
+                localStorage.setItem("savedUsername", username);
+            } else {
+                localStorage.removeItem("rememberMe");
+                localStorage.removeItem("savedUsername");
+            }
+            
+            window.location.href = "admin.html";
+        }
+        });
+
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            document.getElementById("nav-menu").classList.toggle("show");
+        });
+
+        document.getElementById("forgotPassword").addEventListener("click", async function() {
+            const email = prompt("Masukkan email Anda untuk reset kata sandi:");
+            if (email) {
+                const { error } = await supabaseClient.auth.resetPasswordForEmail(email);
+                if (error) {
+                    alert("Gagal mengirim email reset: " + error.message);
+                } else {
+                    alert("Email reset kata sandi telah dikirim.");
+                }
             }
         });
 
-        function validateLogin(event) {
-            event.preventDefault();
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-            let remember = document.getElementById("remember").checked;
-            
-            if (username === "afifanant" && password === "admin") {
-                if (remember) {
-                    localStorage.setItem("username", username);
-                    localStorage.setItem("remember", "true");
-                } else {
-                    localStorage.removeItem("username");
-                    localStorage.removeItem("remember");
-                }
-                window.location.href = 'admin.html';
-            } else {
-                alert("Username atau password salah!");
-            }
-        }
+        function togglePassword() {
+    var passwordInput = document.getElementById("password");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+
+function togglePassword() {
+    var passwordInput = document.getElementById("password");
+    var eyeIcon = document.getElementById("eyeIcon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.src = "images/eye.png"; // Ganti ikon ke mata tertutup
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.src = "images/eye-tutup.png"; // Ganti ikon ke mata terbuka
+    }
+}
     </script>
-</head>
-<body>
-    <div class="login-container">
-        <h2>Login Admin</h2>
-        <form onsubmit="validateLogin(event)">
-            <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" id="username" placeholder="Username" required>
-            </div>
-            <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="password" placeholder="Password" required>
-            </div>
-            <div class="remember-box">
-                <input type="checkbox" id="remember"> <label for="remember">Ingat Saya</label>
-            </div>
-            <button type="submit" class="login-btn">Masuk</button>
-        </form>
-        <p class="footer-text">Hanya untuk administrator AnantFlix.</p>
-    </div>
 </body>
 </html>
