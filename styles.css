@@ -1784,12 +1784,10 @@ video, iframe {
     
     #video-container {
         position: relative;
-            width: 90vw;
-            max-width: 1000px;
-            height: 90vw;
-            aspect-ratio: 16 / 9;
+        width: 100vw;
+        height: 60vh; /* Dibuat lebih pendek */
             overflow: hidden;
-            margin-top: 100px; /* Geser video ke bawah */
+            margin-top: 50px; /* Geser video ke bawah */
     }
 
     #video-player, iframe {
