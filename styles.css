@@ -379,12 +379,19 @@ footer {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 80vh;
-    background: url('images/tulang-belulang.jpg') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-overlay {
@@ -393,19 +400,21 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Efek gelap di atas video */
 }
 
 .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
+    position: absolute;
+    top: 30%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2;
 }
 
-.hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-}
+
+
 
 .hero-description {
     font-size: 1.2rem;
@@ -741,6 +750,7 @@ footer {
 .hero-title {
     font-size: 2rem; /* Kurangi ukuran teks */
     font-weight: 700;
+    margin-top: 0%;
 }
 
 .hero-description {
@@ -768,7 +778,7 @@ footer {
     }
 
     .hero-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .hero-description {
@@ -776,7 +786,7 @@ footer {
     }
 
     .hero-buttons button {
-        font-size: 12px;
+        font-size: 10px;
         padding: 6px 12px;
     }
 }
@@ -1384,6 +1394,15 @@ button:hover {
         padding: 6px 12px;
         width: auto; /* Pastikan tombol tidak terlalu lebar */
         min-width: 50px; /* Tambahkan batas minimum */
+    }
+    .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+        z-index: 2;
     }
 }
 
