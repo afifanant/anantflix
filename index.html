@@ -493,8 +493,9 @@ movies.forEach(movie => {
         </div>
     `;
     movieDiv.addEventListener("click", () => {
-  window.location.href = `player.html?video=${encodeURIComponent(movie.url)}`;
+    window.location.href = `player.html?video=${encodeURIComponent(movie.url)}&title=${encodeURIComponent(movie.title)}`;
 });
+
 
     movieContainer.appendChild(movieDiv);
 });
@@ -605,7 +606,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
 
 
     </script>

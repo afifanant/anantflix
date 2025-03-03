@@ -30,6 +30,7 @@
                 Maaf, browser Anda tidak mendukung pemutar video.
             </video>
         </div>
+        <h2 id="video-title" style="text-align: center; margin-bottom: 10px;"></h2>
     </div>
     
     <footer>
@@ -37,37 +38,50 @@
     </footer>
 
     <script>
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const videoUrl = urlParams.get('video');
-            const videoContainer = document.getElementById("video-container");
-            
-            if (videoUrl.includes("boosterx.stream") || videoUrl.includes("ghbrisk.com")) {
-    videoContainer.innerHTML = `<iframe src="${videoUrl}" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>`;
-} else {
-    const videoPlayer = document.getElementById("video-player");
-    videoPlayer.src = videoUrl;
-    videoPlayer.autoplay = true;
-}
+      window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoUrl = urlParams.get('video');
+    const videoTitle = urlParams.get('title');
 
-        };
+    // Pastikan elemen judul ada di dalam HTML
+    const titleElement = document.getElementById("video-title");
+    if (videoTitle) {
+        titleElement.textContent = decodeURIComponent(videoTitle);
+    } else {
+        titleElement.textContent = "Judul Tidak Diketahui";
+    }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuToggle = document.getElementById("menu-toggle");
-            const navMenu = document.getElementById("nav-menu");
+   // **Atur Video Player**
+   const videoPlayer = document.getElementById("video-player");
+    const videoContainer = document.getElementById("video-container");
 
-            menuToggle.addEventListener("click", function() {
-                navMenu.classList.toggle("show");
-                menuToggle.innerHTML = navMenu.classList.contains("show") ? "✖" : "&#9776;";
-            });
-        });
+    if (!videoUrl) {
+        videoContainer.innerHTML = "<p style='text-align: center;'>Video tidak ditemukan.</p>";
+        return;
+    }
 
-        window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const videoUrl = urlParams.get('video');
-        document.getElementById("video-container").innerHTML = 
-            `<iframe src="${videoUrl}" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>`;
-    };
+    if (videoUrl.includes("boosterx.stream") || videoUrl.includes("ghbrisk.com")) {
+        // **Jika video dari streaming eksternal, pakai iframe**
+        videoContainer.innerHTML = `<iframe src="${videoUrl}" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>`;
+    } else {
+        // **Jika video dari Supabase, atur sebagai source video**
+        videoPlayer.src = decodeURIComponent(videoUrl);
+        videoPlayer.load();
+        videoPlayer.play();
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuToggle.addEventListener("click", function() {
+        navMenu.classList.toggle("show");
+    });
+});
+
+    
+
     </script>
 </body>
 </html>

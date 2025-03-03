@@ -42,17 +42,6 @@ body {
 
 
 
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-.navbar ul li a:hover {
-    color: #E50914;
-}
 
 
 .video-container {
@@ -321,16 +310,52 @@ footer {
 }
 
 .navbar ul li a {
-    color: white;
+    color: white !important;
+    transition: color 0.3s ease-in-out !important;
     text-decoration: none;
     font-weight: 500;
     font-size: 20px;
-    transition: color 0.3s ease-in-out;
 }
 
 .navbar ul li a:hover {
-    color: #E50914;
+    color: #E50914 !important;
 }
+
+/* Animasi garis bawah saat hover */
+.navbar ul li a {
+    position: relative;
+    color: white;
+    font-weight: 500;
+    padding: 5px 0;
+}
+
+.navbar ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #E50914;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+
+.navbar ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Efek fade-in */
+.navbar {
+    transition: background 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+}
+
 
 /* Hamburger Menu */
 .menu-toggle {
@@ -1694,3 +1719,102 @@ body {
 
 
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.navbar {
+    display: flex;
+    padding: 10px;
+}
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+
+.container {
+    flex: 1;
+    max-width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+#video-container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+video, iframe {
+    width: 100%;
+    height: 400px;
+}
+#video-container {
+    width: 100%;
+    max-width: 1600px; /* Lebar maksimum untuk tampilan bioskop */
+    margin: auto;
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8); /* Efek bayangan */
+}
+
+/* Paksa video player menjadi lebih lebar dan pendek */
+#video-player, iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 32 / 8; /* Rasio lebih lebar dan pendek */
+    border-radius: 8px;
+}
+
+/* Responsif untuk layar lebih kecil */
+@media (max-width: 1024px) {
+    #video-container {
+        max-width: 1400px;
+    }
+    #video-player, iframe {
+        aspect-ratio: 21 / 9; /* Sedikit kurang lebar di layar kecil */
+    }
+}
+
+@media (max-width: 768px) {
+    #video-container {
+        max-width: 100%;
+        padding: 50px;
+    }
+    #video-player, iframe {
+        aspect-ratio: 16 / 9; /* Kembali ke standar di HP */
+    }
+}
+
+#video-title {
+    font-size: 28px; /* Ukuran lebih besar */
+    font-weight: bold;
+    font-style: italic; /* Bikin teks jadi miring */
+    text-align: center;
+    color: #E50914; /* Warna merah khas bioskop */
+    text-transform: uppercase; /* Ubah teks jadi kapital */
+    letter-spacing: 2px; /* Jarak antar huruf lebih lebar */
+    margin: 20px auto;
+    max-width: 800px; /* Batasi lebar agar tidak terlalu panjang */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    #video-title {
+        font-size: 22px;
+        letter-spacing: 1px;
+        margin: 50px auto;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #video-title {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+}
