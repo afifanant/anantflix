@@ -1790,13 +1790,13 @@ video, iframe {
         position: fixed;
         top: 0;
         left: 0;
-        width: 90vw;
+        width: 100vw;
         height: 90vh;
         display: flex;
     }
 
     #video-player, iframe {
-        width: 90%;
+        width: 100%;
         height: 90%;
         object-fit: cover;
     }
