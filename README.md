@@ -19,7 +19,7 @@ Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
 
 ```bash
 # Clone repositori
-git clone https://github.com/username/anantflix.git
+git clone https://github.com/afifanant/anantflix.git
 
 # Masuk ke direktori proyek
 cd anantflix
