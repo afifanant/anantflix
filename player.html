@@ -58,8 +58,7 @@
         return;
     }
 
-    if (videoUrl.includes("boosterx.stream") || videoUrl.includes("ghbrisk.com")) {
-        // **Jika video dari streaming eksternal, pakai iframe**
+    if (videoUrl.includes("boosterx.stream") || videoUrl.includes("ghbrisk.com") || videoUrl.includes("bestx.stream")) {
         videoContainer.innerHTML = `<iframe src="${videoUrl}" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>`;
     } else {
         // **Jika video dari Supabase, atur sebagai source video**
