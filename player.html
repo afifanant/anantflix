@@ -36,21 +36,17 @@
     </footer>
 
     <script>
-      window.onload = function() {
+    window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
     const videoUrl = urlParams.get('video');
     const videoTitle = urlParams.get('title');
 
-    // Pastikan elemen judul ada di dalam HTML
+    // Atur Judul
     const titleElement = document.getElementById("video-title");
-    if (videoTitle) {
-        titleElement.textContent = decodeURIComponent(videoTitle);
-    } else {
-        titleElement.textContent = "Judul Tidak Diketahui";
-    }
+    titleElement.textContent = videoTitle ? decodeURIComponent(videoTitle) : "Judul Tidak Diketahui";
 
-   // **Atur Video Player**
-   const videoPlayer = document.getElementById("video-player");
+    // Atur Video Player
+    const videoPlayer = document.getElementById("video-player");
     const videoContainer = document.getElementById("video-container");
 
     if (!videoUrl) {
@@ -58,13 +54,16 @@
         return;
     }
 
-    if (videoUrl.includes("boosterx.stream") || videoUrl.includes("ghbrisk.com") || videoUrl.includes("bestx.stream")) {
-        videoContainer.innerHTML = `<iframe src="${videoUrl}" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>`;
-    } else {
-        // **Jika video dari Supabase, atur sebagai source video**
+    // **Coba Deteksi Format**
+    if (videoUrl.endsWith(".mp4") || videoUrl.endsWith(".webm") || videoUrl.endsWith(".ogg")) {
+        // Jika format video langsung (mp4, webm, ogg), gunakan video tag
         videoPlayer.src = decodeURIComponent(videoUrl);
+        videoPlayer.style.display = "block";
         videoPlayer.load();
         videoPlayer.play();
+    } else {
+        // Jika bukan file video langsung, gunakan iframe
+        videoContainer.innerHTML = `<iframe src="${videoUrl}" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>`;
     }
 };
 
